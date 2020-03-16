@@ -7,6 +7,7 @@ setup(
     py_modules=["grocer"],
     packages=setuptools.find_packages(),
     install_requires=["Click",],
+    tests_require=["pytest"],
     entry_points="""
         [console_scripts]
         grocer=grocer:cli

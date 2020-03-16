@@ -34,11 +34,11 @@ class Browser:
 
 
 @click.command()
-@click.option("--debug/--no-debug", default=False)
+@click.option("-d", "--debug/--no-debug", default=False)
 @click.option("-n", "--dry-run/--no-dry-run", default=False)
-@click.option("-d", "--delay", default=0.1, show_default=True, type=float)
+@click.option("-p", "--pause", default=0.1, show_default=True, type=float)
 @click.argument("product", nargs=-1)
-def cli(product, debug, dry_run, delay):
+def cli(product, debug, dry_run, pause):
     logger = logging.getLogger(__name__)
     if debug:
         logger.setLevel(logging.DEBUG)
@@ -63,4 +63,4 @@ def cli(product, debug, dry_run, delay):
         url = store.url(product)
         browser.open(url)
         if not dry_run and not i == len(store_list) - 1:
-            time.sleep(delay)
+            time.sleep(pause)
